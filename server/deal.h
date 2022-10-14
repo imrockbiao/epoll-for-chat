@@ -8,7 +8,9 @@
 #include<string.h>
 #include<sys/epoll.h>
 
-#define PORT 5555
+#include"data.h"
+
+#define PORT 8888
 #define MAXONLINE 1024
 
 #define printfLine printf("--%s--%d--", __FILE__, __LINE__);printf
@@ -26,8 +28,10 @@ void sock_listen(int *sfd);
 //1. 创建树
 void epfd_create(int *epfd);
 
-//2. sfd上树
-void epfd_contrl(int *epfd, int *sfd);
+//2. fd上树
+void epfd_contrl(int *epfd, int *fd);
+//2. fd下数
+void epfd_contrl_down(int *epfd, struct epoll_event *pfd);
 
 //3. epfd等待返回
 void epfd_wait(int *epfd, struct epoll_event* evs, int *nready);

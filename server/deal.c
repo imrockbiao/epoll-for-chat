@@ -59,13 +59,19 @@ void epfd_create(int *epfd)
     (*epfd) = epoll_create(1);
 }
 
-//2. sfd上树
-void epfd_contrl(int *epfd, int *sfd)
+//2. fd上树
+void epfd_contrl(int *epfd, int *fd)
 {
     struct epoll_event ev;
-    ev.data.fd = *sfd;
+    ev.data.fd = *fd;
     ev.events = EPOLLIN;
-    epoll_ctl((*epfd), EPOLL_CTL_ADD, *sfd, &ev);
+    epoll_ctl((*epfd), EPOLL_CTL_ADD, *fd, &ev);
+}
+
+//2. fd下数
+void epfd_contrl_down(int *epfd, struct epoll_event *pfd)
+{
+    epoll_ctl(*epfd, EPOLL_CTL_DEL, pfd->data.fd, pfd);
 }
 
 
@@ -88,11 +94,11 @@ void epfd_deal(int *epfd, struct epoll_event* evs, int *nready, int *sfd)
             //当有新连接的客户端的时候
             if(evs[i].data.fd == (*sfd) && evs[i].events & EPOLLIN)
             {
-                
+                client_accept(epfd, sfd);//处理新连接
             }
             else if(evs[i].events & EPOLLIN)
             {//客户端有数据发送
-
+                client_data(epfd, &evs[i]);//处理数据
             }
         }
 }

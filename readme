@@ -1,1 +1,18 @@
 # 基于epoll模型的聊天服务器
+
+# 启动server, 启动client
+# 服务器的IP地址和端口号需要改动
+
+gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 
+
+(gdb) show version
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+VisualStudioCode版本: 1.71.2
+
+Ubuntu ->uname -a
+Linux gb 5.15.0-48-generic #54~20.04.1-Ubuntu SMP Thu Sep 1 16:17:26 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+
+

@@ -23,10 +23,7 @@ int main()
     {
         int nready =0;
         epfd_wait(&epfd, evs, &nready);
-        epfd_deal(&epfd, evs, &nready, &sfd);
-
-         
-        
+        epfd_deal(&epfd, evs, &nready, &sfd);        
     }
 
 
